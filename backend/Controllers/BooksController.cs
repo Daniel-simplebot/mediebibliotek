@@ -1,6 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using backend.Data;
+using backend.DTO;
+
+namespace backend.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
@@ -30,7 +33,7 @@ public class BooksController(LibraryContext context) : ControllerBase
     }
 
     [HttpPost]
-    public async Task<ActionResult<Book>> Create(CreateBookRequest request)
+    public async Task<ActionResult<Book>> Create(BookRequest request)
     {
         var book = new Book
         {
