@@ -17,7 +17,7 @@ namespace backend.Migrations
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Title = table.Column<string>(type: "TEXT", nullable: false),
-                    Author = table.Column<string>(type: "TEXT", nullable: true),
+                    Author = table.Column<string>(type: "TEXT", nullable: false),
                     IsOwned = table.Column<bool>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
@@ -32,7 +32,6 @@ namespace backend.Migrations
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Title = table.Column<string>(type: "TEXT", nullable: false),
-                    Platform = table.Column<string>(type: "TEXT", nullable: true),
                     IsOwned = table.Column<bool>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>

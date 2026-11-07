@@ -2,12 +2,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using backend.Data;
 using backend.DTO;
+using backend.Models;
 
 namespace backend.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class BooksController(LibraryContext context) : ControllerBase
+public class BooksController(DataContext context) : ControllerBase
 {
     [HttpGet]
     public async Task<ActionResult<List<Book>>> GetAll()
