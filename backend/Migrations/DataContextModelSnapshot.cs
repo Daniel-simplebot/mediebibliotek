@@ -29,6 +29,9 @@ namespace backend.Migrations
                     b.Property<bool>("IsOwned")
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("Status")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("TEXT");
