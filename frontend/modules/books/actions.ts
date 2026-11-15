@@ -55,6 +55,7 @@ export async function addBook(book: BookSearchResult) {
     body: JSON.stringify({
       title: book.title,
       author: book.authors.join(", "),
+      thumbnail: book.thumbnail
     }),
   })
 

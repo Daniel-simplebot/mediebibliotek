@@ -6,6 +6,7 @@ export type Book = {
   author: string;
   isOwned: boolean;
   status: Status;
+  thumbnail: string;
 };
 
 export type BookSearchResult = {

@@ -41,7 +41,8 @@ public class BooksController(DataContext context, IHttpClientFactory httpClientF
         {
             Title = request.Title,
             Author = request.Author,
-            IsOwned = true
+            IsOwned = true,
+            Thumbnail = request.Thumbnail
         };
 
         context.Books.Add(book);
@@ -63,7 +64,7 @@ public class BooksController(DataContext context, IHttpClientFactory httpClientF
 
         return NoContent();
     }
-    
+
     [HttpGet("search")]
     public async Task<IActionResult> Search([FromQuery] BookSearchRequest request)
     {
@@ -115,7 +116,7 @@ public class BooksController(DataContext context, IHttpClientFactory httpClientF
                     if (d.TryGetProperty("cover_i", out var cover) &&
                         cover.TryGetInt32(out var coverId))
                     {
-                        thumbnail = $"https://covers.openlibrary.org/b/id/{coverId}-S.jpg";
+                        thumbnail = $"https://covers.openlibrary.org/b/id/{coverId}-L.jpg";
                     }
 
                     return new
@@ -127,7 +128,7 @@ public class BooksController(DataContext context, IHttpClientFactory httpClientF
                     };
                 })
                 .ToList();
-                
+
             return Ok(items);
         }
         catch (JsonException)

@@ -7,4 +7,5 @@ public class Book
     public string Author { get; set; } = string.Empty;
     public bool IsOwned { get; set; }
     public Status Status { get; set; } = Status.NotStarted;
+    public string Thumbnail { get; set; } = string.Empty;
 }
