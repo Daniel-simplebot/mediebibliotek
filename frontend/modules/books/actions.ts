@@ -55,24 +55,27 @@ export async function addBook(book: BookSearchResult) {
     body: JSON.stringify({
       title: book.title,
       author: book.authors.join(", "),
-      thumbnail: book.thumbnail
+      thumbnail: book.thumbnail ,
     }),
   })
 
+  if (!res.ok) {
+    const error = await res.text()
+    throw new Error(`Klarte ikke lagre boken: ${res.status} ${error}`)
+  }
+
   updateTag("books")
-
-  if (!res.ok) throw new Error("Klarte ikke lagre boken")
-
   return res.json()
 }
 
 export async function deleteBook(id: number) {
-  const response = await fetch(`${BOOKS_API_URL}/${id}`, {
+  const res = await fetch(`${BOOKS_API_URL}/${id}`, {
     method: "DELETE",
   })
-
-  if (!response.ok) {
-    throw new Error("Could not delete book")
+  
+  if (!res.ok) {
+    const error = await res.text()
+    throw new Error(`Klarte ikke å slette boka: ${res.status} ${error}`)
   }
 
   updateTag("books")
